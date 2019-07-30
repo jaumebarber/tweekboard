@@ -3,5 +3,11 @@
 }
 
 .mat-toolbar-single-row {
-  height: 50px;
+  height: 6%;
 }
+
+#navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  }
