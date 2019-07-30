@@ -1,32 +1,7 @@
-
-#board {
-  display: grid;
-  grid-template-rows: 5% 1fr;
-  min-height: 93.9vh;
-  background: url('https://source.unsplash.com/random') no-repeat;
-  background-size: 100%;
-  border-radius: 0%;
-  padding-bottom: .5%;
-
+#logo{
+  margin-right: 0.3em;
 }
-
-.columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-row-start: 2;
-  grid-column-start: 1;
-  grid-column-gap: 1em;
-  opacity: .85;
-}
-
-mat-form-field{
-  width: 32.6%;
-}
-
-.title-input {
-  margin: 0;
-  border: none;
-  font-weight: 700;
-  font-size: inherit;
+.navbar{
+  height: 50px;
 }
 
