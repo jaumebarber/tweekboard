@@ -1,12 +1,7 @@
-
-#logo{
-  margin-right: 0.3em;
+#menu-icon {
+  margin-right: .3em;
 }
 
-#navbar{
-  min-height: 2.5vh;
-  max-height: 3.5vh;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+.mat-toolbar-single-row {
+  height: 50px;
 }
