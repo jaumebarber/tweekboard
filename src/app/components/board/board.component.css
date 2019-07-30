@@ -2,5 +2,10 @@
   height: 89.3%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 9% 1fr 1fr 1fr;
+}
+
+.card {
+  grid-column-start: 1;
+  grid-row: span 5;
 }
