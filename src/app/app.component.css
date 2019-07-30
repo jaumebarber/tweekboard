@@ -1,7 +1,26 @@
 #logo{
   margin-right: 0.3em;
 }
+
 .navbar{
   height: 50px;
+  position: sticky;
+  z-index: 1;
 }
+
+.board{
+  height: 88.3%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 9% 1fr
+}
+
+.card {
+  grid-column-start: 1;
+  grid-row-end: 3;
+}
+
+
+
+
 
