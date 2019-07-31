@@ -2,12 +2,19 @@ import { Component } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
-  selector: 'app-drag',
-  templateUrl: './drag.component.html',
-  styleUrls: ['./drag.component.css'],
+  selector: 'app-columns',
+  templateUrl: './columns.component.html',
+  styleUrls: ['./columns.component.css'],
 })
-export class DragComponent {
+export class ColumnsComponent {
   todo = [
+    'Get to work',
+    'Pick up groceries',
+    'Go home',
+    'Fall asleep'
+  ];
+
+  doing = [
     'Get to work',
     'Pick up groceries',
     'Go home',
