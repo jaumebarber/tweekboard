@@ -7,6 +7,7 @@ describe('ColumnsComponent', () => {
   let component: ColumnsComponent;
   let fixture: ComponentFixture<ColumnsComponent>;
 
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ColumnsComponent ],
@@ -26,4 +27,5 @@ describe('ColumnsComponent', () => {
   it('should compile', () => {
     expect(component).toBeTruthy();
   });
+  
 });

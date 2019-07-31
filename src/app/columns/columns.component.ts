@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { TaskService } from '../task.service';
+
 
 @Component({
   selector: 'app-columns',
@@ -7,29 +9,16 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
   styleUrls: ['./columns.component.css'],
 })
 export class ColumnsComponent {
-  todo = [
-    'Get to work',
-    'Pick up groceries',
-    'Go home',
-    'Fall asleep'
-  ];
+    constructor(private taskservice: TaskService) {}
+    content = this.getContent();
+    todo = this.content;
+    doing = [];
+    done = [];
 
-  doing = [
-    'Get to work',
-    'Pick up groceries',
-    'Go home',
-    'Fall asleep'
-  ];
-
-  done = [
-    'Get up',
-    'Brush teeth',
-    'Take a shower',
-    'Check e-mail',
-    'Walk dog'
-  ];
-
-  drop(event: CdkDragDrop<string[]>) {
+    getContent() {
+       return this.taskservice.getContent();
+    }
+    drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -38,5 +27,6 @@ export class ColumnsComponent {
           event.previousIndex,
           event.currentIndex);
     }
+
   }
 }
