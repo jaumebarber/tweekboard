@@ -1,0 +1,10 @@
+
+#board {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 9% 1fr;
+}
+
+.card {
+  grid-row-start: 2;
+}
