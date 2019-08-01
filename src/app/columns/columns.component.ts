@@ -27,6 +27,5 @@ export class ColumnsComponent {
           event.previousIndex,
           event.currentIndex);
     }
-
   }
 }

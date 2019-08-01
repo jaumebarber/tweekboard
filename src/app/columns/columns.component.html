@@ -1,15 +1,15 @@
 <div class="card-content">
   <h2>ToDo</h2>
-
   <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
       [cdkDropListConnectedTo]="doingList" class="list" (cdkDropListDropped)="drop($event)">
-    <div class="list-item" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+    <div class="list-item" *ngFor="let item of todo" cdkDrag>
+      {{item}}
+    </div>
   </div>
 </div>
 
 <div class="card-content">
   <h2>Doing</h2>
-
   <div cdkDropList #doingList="cdkDropList" [cdkDropListData]="doing"
       [cdkDropListConnectedTo]="[todoList, doneList]" class="list" (cdkDropListDropped)="drop($event)">
     <div class="list-item" *ngFor="let item of doing" cdkDrag>{{item}}</div>
@@ -18,7 +18,6 @@
 
 <div class="card-content">
   <h2>Done</h2>
-
   <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
       [cdkDropListConnectedTo]="doingList" class="list" (cdkDropListDropped)="drop($event)">
     <div class="list-item" *ngFor="let item of done" cdkDrag>{{item}}</div>
