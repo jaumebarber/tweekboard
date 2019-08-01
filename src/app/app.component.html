@@ -1,8 +1,9 @@
 <app-navbar [title]="title"></app-navbar>
 <mat-card id="board">
-  <mat-form-field color="primary">
-    <input matInput placeholder="Project Name:" value="Tweeky-tweezy!">
-  </mat-form-field>
+  <h2>
+    <input *ngIf="!hasTitle"[(ngModel)]="projectTitle" (keyup.enter)="saveTitle()" value="{{projectTitle}}">
+    <input *ngIf="hasTitle" [(ngModel)]="projectTitle" value="{{projectTitle}}" (keyup.enter)="saveTitle()">
+  </h2>
   <app-columns class="columns"></app-columns>
 </mat-card>
 <router-outlet></router-outlet>
