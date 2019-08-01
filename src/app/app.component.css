@@ -17,4 +17,10 @@ mat-form-field{
   width: 32.3%;
 }
 
+.title-input {
+  display: block; 
+  margin: 0em;
+  border: 0;
+}
+
 
