@@ -1,4 +1,4 @@
-<div class="card-content">
+<div class="column">
   <h2>ToDo</h2>
   <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
       [cdkDropListConnectedTo]="doingList" class="list" (cdkDropListDropped)="drop($event)">
@@ -8,7 +8,7 @@
   </div>
 </div>
 
-<div class="card-content">
+<div class="column">
   <h2>Doing</h2>
   <div cdkDropList #doingList="cdkDropList" [cdkDropListData]="doing"
       [cdkDropListConnectedTo]="[todoList, doneList]" class="list" (cdkDropListDropped)="drop($event)">
@@ -16,7 +16,7 @@
   </div>
 </div>
 
-<div class="card-content">
+<div class="column">
   <h2>Done</h2>
   <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
       [cdkDropListConnectedTo]="doingList" class="list" (cdkDropListDropped)="drop($event)">
