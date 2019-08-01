@@ -1,8 +1,8 @@
-<app-navbar></app-navbar>
+<app-navbar [title]="title"></app-navbar>
 <mat-card id="board">
-  <app-columns class="card">
-
-    
-  </app-columns>
+  <mat-form-field color="primary">
+    <input matInput placeholder="Project Name:" value="Tweeky-tweezy!">
+  </mat-form-field>
+  <app-columns class="card"></app-columns>
 </mat-card>
 <router-outlet></router-outlet>

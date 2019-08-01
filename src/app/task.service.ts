@@ -3,29 +3,23 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+
 export class TaskService {
 
-  todo = [
+  tasks = [
     'Get to work',
     'Pick up groceries',
     'Go home',
     'Fall asleep'
   ];
 
-  doing = [
-
-  ];
-
-  done = [
-
-  ];
-
   constructor() { }
 
   getContent() {
-    return this.todo;
+    return this.tasks;
   }
 
-
-
+  createTask(task: string): void {
+    this.tasks.push(task);
+  }
 }
