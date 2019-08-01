@@ -13,4 +13,8 @@
   grid-column-gap: 1em;
 }
 
+mat-form-field{
+  width: 32.3%;
+}
+
 
