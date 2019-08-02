@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TaskService } from '../task.service';
+import { Task } from '../task';
 
 
 @Component({
@@ -8,18 +9,24 @@ import { TaskService } from '../task.service';
   templateUrl: './columns.component.html',
   styleUrls: ['./columns.component.css'],
 })
-export class ColumnsComponent {
+export class ColumnsComponent implements OnInit {
     constructor(private taskservice: TaskService) {}
-    content = this.getContent();
-    todo = this.content;
+    todo: Task[];
     doing = [];
     done = [];
+  
 
-    listItem = document.querySelector(".list-item");
+    
+    
+    ngOnInit() {
+      this.getTasks();
+      console.log(this.todo)
+    }
+    
+    getTasks(): void {
 
-
-    getContent() {
-       return this.taskservice.getContent();
+       this.taskservice.getTasks()
+           .subscribe(tasks => this.todo = tasks)
     }
 
     drop(event: CdkDragDrop<string[]>) {
