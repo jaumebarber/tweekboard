@@ -4,8 +4,8 @@
       [cdkDropListConnectedTo]="doingList" class="list" (cdkDropListDropped)="drop($event)">
     <li  class="list-item" *ngFor="let task of todo" cdkDrag>
       {{task.name}}     
-      <button class="delete" title="delete item"
-      (click)="deleteContent(listItem)">x</button>
+      <button class="delete" title="delete task"
+      (click)="delete(task)">x</button>
     </li>
   </ul>
 </div>
