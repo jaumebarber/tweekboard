@@ -29,6 +29,11 @@ export class ColumnsComponent implements OnInit {
            .subscribe(tasks => this.todo = tasks)
     }
 
+    delete(task: Task): void {
+      this.todo = this.todo.filter(t => t !== task);
+      this.taskservice.deleteTask(task).subscribe();
+    }
+
     drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
