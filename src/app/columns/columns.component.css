@@ -9,6 +9,9 @@
 }
 
 .list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 20px 10px;
   border-bottom: solid 1px #ccc;
   box-sizing: border-box;
@@ -45,21 +48,16 @@
 }
 
 .delete{
-  display: inline-block;
-  text-decoration: none;
   color:white;
   width: 25px;
   height: 25px;
   line-height: 12px;
   border-radius: 4px;
   border: none;
-  text-align: center;
   overflow: hidden;
   transition: .4s;
   font-family: Nunito;
   font-size: 10pt;
-  float: right;
-
 
 }
 
