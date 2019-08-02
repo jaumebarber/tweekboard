@@ -1,4 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Task } from './task';
+import { Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -6,17 +10,12 @@ import { Injectable } from '@angular/core';
 
 export class TaskService {
 
-  tasks = [
-    'Get to work',
-    'Pick up groceries',
-    'Go home',
-    'Fall asleep'
-  ];
+  private tasksUrl = 'api/tasks';
+  tasks: Task[];
 
-  constructor() { }
+  constructor( private http: HttpClient) { }
 
-  getContent() {
-    return this.tasks;
+  getTasks():Observable<Task[]> {
+    return this.http.get<Task[]>(this.tasksUrl);
   }
-
 }
