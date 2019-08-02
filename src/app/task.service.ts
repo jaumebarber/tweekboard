@@ -19,7 +19,4 @@ export class TaskService {
     return this.tasks;
   }
 
-  createTask(task: string): void {
-    this.tasks.push(task);
-  }
 }

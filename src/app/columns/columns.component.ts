@@ -15,6 +15,9 @@ export class ColumnsComponent {
     doing = [];
     done = [];
 
+    listItem = document.querySelector(".list-item");
+
+
     getContent() {
        return this.taskservice.getContent();
     }
