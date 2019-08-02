@@ -18,6 +18,7 @@ export class ColumnsComponent {
     getContent() {
        return this.taskservice.getContent();
     }
+
     drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
