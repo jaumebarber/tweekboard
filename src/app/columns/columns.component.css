@@ -44,3 +44,25 @@
   opacity: 0;
 }
 
+.delete{
+  display: inline-block;
+  text-decoration: none;
+  color:white;
+  width: 25px;
+  height: 25px;
+  line-height: 12px;
+  border-radius: 4px;
+  border: none;
+  text-align: center;
+  overflow: hidden;
+  transition: .4s;
+  font-family: Nunito;
+  font-size: 10pt;
+  float: right;
+
+
+}
+
+.delete:hover {
+    background: grey;
+}
