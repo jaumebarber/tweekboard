@@ -20,12 +20,14 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { AppComponent } from './app.component';
 import { ColumnsComponent } from './columns/columns.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ColumnsComponent,
-    NavbarComponent
+    NavbarComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

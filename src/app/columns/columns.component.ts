@@ -14,19 +14,21 @@ export class ColumnsComponent implements OnInit {
     todo: Task[];
     doing = [];
     done = [];
-  
 
-    
-    
     ngOnInit() {
       this.getTasks();
-      console.log(this.todo)
     }
-    
+    add(name: string): void {
+      name = name.trim();
+      if (!name) { return; }
+      this.taskservice.addTask({ name } as Task)
+        .subscribe(task => {
+          this.todo.push(task);
+        });
+    }
     getTasks(): void {
-
        this.taskservice.getTasks()
-           .subscribe(tasks => this.todo = tasks)
+           .subscribe(tasks => this.todo = tasks);
     }
 
     delete(task: Task): void {
