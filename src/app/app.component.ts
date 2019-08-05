@@ -17,7 +17,7 @@ export class AppComponent {
 
   saveTitle(): void {
     if (this.projectTitle) {
-      this.hasTitle = !this.hasTitle  ;
+      this.hasTitle = !this.hasTitle;
     }
   }
 }
