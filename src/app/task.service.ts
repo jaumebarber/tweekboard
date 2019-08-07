@@ -59,6 +59,7 @@ export class TaskService {
     return this.http.delete<Task>(url, this.httpOptions);
   }
 
+
   private log(message: string) {
     this.messageSrv.add(`TaskService: ${message}`);
   }

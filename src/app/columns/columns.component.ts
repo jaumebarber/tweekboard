@@ -15,6 +15,10 @@ export class ColumnsComponent implements OnInit {
     doing = [];
     done = [];
 
+    hasTitle = false;
+    defaultValue = 'ToDo';
+    columnTitle = '' || this.defaultValue;
+
     ngOnInit() {
       this.getTasks();
     }
@@ -26,6 +30,13 @@ export class ColumnsComponent implements OnInit {
           this.todo.push(task);
         });
     }
+
+    saveColumnTitle(): void {
+    if (this.columnTitle) {
+      this.hasTitle = !this.hasTitle;
+    }
+  }
+
     getTasks(): void {
        this.taskservice.getTasks()
            .subscribe(tasks => this.todo = tasks);

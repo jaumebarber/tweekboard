@@ -1,5 +1,9 @@
-<div class="column">
-  <h2>ToDo</h2>
+<mat-card class="column">
+  <h3> 
+    <input maxlength="15" class= "title-input" *ngIf="!hasTitle"[(ngModel)]="columnTitle" (keyup.enter)="saveColumnTitle()" value="{{columnTitle}}">
+    <input maxlength="15" class= "title-input" *ngIf="hasTitle" [(ngModel)]="columnTitle" value="{{columnTitle}}" (keyup.enter)="saveColumnTitle()">
+  </h3>
+
   <ul cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
       [cdkDropListConnectedTo]="doingList" class="list" (cdkDropListDropped)="drop($event)">
     <li  class="list-item" *ngFor="let task of todo" cdkDrag>
@@ -8,20 +12,20 @@
       (click)="delete(task)">x</button>
     </li>
   </ul>
-</div>
+</mat-card>
 
-<div class="column">
-  <h2>Doing</h2>
+<mat-card class="column">
+  <h3>Doing</h3>
   <ul cdkDropList #doingList="cdkDropList" [cdkDropListData]="doing"
       [cdkDropListConnectedTo]="[todoList, doneList]" class="list" (cdkDropListDropped)="drop($event)">
     <li class="list-item" *ngFor="let task of doing" cdkDrag>{{task.name}}</li>
 </ul>
-</div>
+</mat-card>
 
-<div class="column">
-  <h2>Done</h2>
+<mat-card class="column">
+  <h3>Done</h3>
   <ul cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
       [cdkDropListConnectedTo]="doingList" class="list" (cdkDropListDropped)="drop($event)">
     <li class="list-item" *ngFor="let task of done" cdkDrag>{{task.name}}</li>
 </ul>
-</div>
+</mat-card>
