@@ -14,7 +14,6 @@ export class AppComponent {
   defaultValue = 'Focus for today';
   projectTitle = '' || this.defaultValue;
 
-
   saveTitle(): void {
     if (this.projectTitle) {
       this.hasTitle = !this.hasTitle;

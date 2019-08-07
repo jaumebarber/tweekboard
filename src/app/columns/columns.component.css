@@ -25,6 +25,35 @@
   border: none;
 }
 
+
+#board {
+  display: grid;
+  grid-template-rows: 9% 1fr;
+  height: 89.2%;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-row-start: 2;
+  grid-column-start: 1;
+  grid-column-gap: 1em;
+}
+
+mat-form-field{
+  width: 32.3%;
+}
+
+.title-input {
+  margin: 0;
+  border: none;
+  font-weight: 700;
+  font-size: inherit;
+}
+
+.cdk-drop-list {
+  padding: 0;
+}
 /* Highlight the list item that is being dragged. */
 .cdk-drag-preview {
   border-radius: 4px;

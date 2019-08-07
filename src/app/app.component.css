@@ -18,12 +18,10 @@ mat-form-field{
 }
 
 .title-input {
-  display: block; 
-  margin: 0em;
+  margin: 0;
   border: none;
-  width: 50%;
-  font-size: 1.5em;
-  
+  font-weight: 700;
+  font-size: inherit;
 }
 
 
