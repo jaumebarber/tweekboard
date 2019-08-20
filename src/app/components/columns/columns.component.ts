@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { TaskService } from '../task.service';
-import { Task } from '../task';
+import { TaskService } from '../../services/task.service';
+import { Task } from '../../models/task';
 
 
 @Component({
@@ -32,10 +32,10 @@ export class ColumnsComponent implements OnInit {
     }
 
     saveColumnTitle(): void {
-    if (this.columnTitle) {
-      this.hasTitle = !this.hasTitle;
+      if (this.columnTitle) {
+        this.hasTitle = !this.hasTitle;
+      }
     }
-  }
 
     getTasks(): void {
        this.taskservice.getTasks()
