@@ -15,12 +15,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
+import { InMemoryDataService } from './services/in-memory-data.service';
 
 import { AppComponent } from './app.component';
-import { ColumnsComponent } from './columns/columns.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { MessagesComponent } from './messages/messages.component';
+import { ColumnsComponent } from './components/columns/columns.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { MessagesComponent } from './components/messages/messages.component';
 
 @NgModule({
   declarations: [
