@@ -31,10 +31,11 @@ export class ColumnsComponent implements OnInit {
         });
     }
 
-    saveColumnTitle(): void {
+    saveColumnTitle(title: string): void {
       if (this.columnTitle) {
         this.hasTitle = !this.hasTitle;
       }
+      this.columnTitle = title;
     }
 
     getTasks(): void {
