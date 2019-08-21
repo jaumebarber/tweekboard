@@ -2,7 +2,7 @@
 #board {
   display: grid;
   grid-template-rows: 9% 1fr;
-  height: 89.2%;
+  min-height: 92vh;
 }
 
 .columns {
