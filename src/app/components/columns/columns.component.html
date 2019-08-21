@@ -1,0 +1,39 @@
+<mat-card class="column">
+  <h3> 
+    <input maxlength="15" #colTitle class="title-input" *ngIf="!hasTitle" [(ngModel)]="columnTitle" (keyup.enter)="saveColumnTitle(colTitle.value)">
+    <input maxlength="15" #colTitle class="title-input" *ngIf="hasTitle" [(ngModel)]="columnTitle" (keyup.enter)="saveColumnTitle(colTitle.value)"> 
+  </h3>
+
+  <ul cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" 
+      [cdkDropListConnectedTo]="doingList" class="list" (cdkDropListDropped)="drop($event)">
+    <li  class="list-item" *ngFor="let task of todo" cdkDrag>
+      <mat-form-field>
+        <input matInput value="{{task.name}}">
+      </mat-form-field>
+      <button title="delete task" (click)="delete(task)">
+        <mat-icon>clear</mat-icon>        
+      </button>
+    </li>
+    
+  </ul>
+  <button style="background-color:green" (click)="add('newtask')">
+    <mat-icon>add</mat-icon>
+  </button>
+</mat-card>
+
+<mat-card class="column">
+  <h3>Doing</h3>
+  <ul cdkDropList #doingList="cdkDropList" [cdkDropListData]="doing"
+      [cdkDropListConnectedTo]="[todoList, doneList]" class="list" (cdkDropListDropped)="drop($event)">
+    
+    <li class="list-item" *ngFor="let task of doing" cdkDrag>{{task.name}}</li>
+</ul>
+</mat-card>
+
+<mat-card class="column">
+  <h3>Done</h3>
+  <ul cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+      [cdkDropListConnectedTo]="doingList" class="list" (cdkDropListDropped)="drop($event)">
+    <li class="list-item" *ngFor="let task of done" cdkDrag>{{task.name}}</li>
+</ul>
+</mat-card>
