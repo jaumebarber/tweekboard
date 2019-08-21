@@ -29,7 +29,7 @@
 #board {
   display: grid;
   grid-template-rows: 9% 1fr;
-  height: 89.2%;
+  height: 95vh;
 }
 
 .columns {
@@ -76,7 +76,7 @@ mat-form-field{
   opacity: 0;
 }
 
-.delete{
+button{
   color:white;
   width: 25px;
   height: 25px;
@@ -87,9 +87,9 @@ mat-form-field{
   transition: .4s;
   font-family: Nunito;
   font-size: 10pt;
-
+  padding: 0;
 }
 
-.delete:hover {
+button:hover {
     background: grey;
 }
