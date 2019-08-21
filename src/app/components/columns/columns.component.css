@@ -25,13 +25,6 @@
   border: none;
 }
 
-
-#board {
-  display: grid;
-  grid-template-rows: 9% 1fr;
-  height: 95vh;
-}
-
 .columns {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
