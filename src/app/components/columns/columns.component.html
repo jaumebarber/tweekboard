@@ -14,10 +14,14 @@
         <mat-icon>clear</mat-icon>        
       </button>
     </li>
-    
+    <li *ngIf="expanded">
+      <mat-form-field>
+        <input matInput #taskValue (keyup.enter)="add(taskValue.value)">
+      </mat-form-field>
+    </li>
   </ul>
-  <button style="background-color:green" (click)="add('newtask')">
-    <mat-icon>add</mat-icon>
+  <button style="background-color:green" (click)="newCard()">
+    <mat-icon>{{expanded ? 'remove' : 'add'}}</mat-icon>
   </button>
 </mat-card>
 

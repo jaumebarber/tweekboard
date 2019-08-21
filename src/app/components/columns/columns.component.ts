@@ -18,6 +18,7 @@ export class ColumnsComponent implements OnInit {
     hasTitle = false;
     defaultValue = 'ToDo';
     columnTitle = '' || this.defaultValue;
+    expanded = false;
 
     ngOnInit() {
       this.getTasks();
@@ -29,6 +30,11 @@ export class ColumnsComponent implements OnInit {
         .subscribe(task => {
           this.todo.push(task);
         });
+      this.newCard();
+    }
+
+    newCard(): void {
+        this.expanded = !this.expanded;
     }
 
     saveColumnTitle(title: string): void {
