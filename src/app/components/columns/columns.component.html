@@ -6,9 +6,9 @@
 
   <ul cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" 
       [cdkDropListConnectedTo]="doingList" class="list" (cdkDropListDropped)="drop($event)">
-    <li  class="list-item" *ngFor="let task of todo" cdkDrag>
+    <li class="list-item" *ngFor="let task of todo" cdkDrag>
       <mat-form-field>
-        <input matInput value="{{task.name}}">
+        <input matInput (keyup.enter)="update(task)" [(ngModel)]="task.text">
       </mat-form-field>
       <button title="delete task" (click)="delete(task)">
         <mat-icon>clear</mat-icon>        
@@ -16,12 +16,12 @@
     </li>
     <li *ngIf="expanded">
       <mat-form-field>
-        <input matInput #taskValue (keyup.enter)="add(taskValue.value)">
+        <input matInput #newTask (keyup.enter)="add(newTask.value)">
       </mat-form-field>
     </li>
   </ul>
-  <button style="background-color:green" (click)="newCard()">
-    <mat-icon>{{expanded ? 'remove' : 'add'}}</mat-icon>
+  <button style="background-color:green" (click)="expand()">
+    <mat-icon>{{expanded ? 'clear' : 'add'}}</mat-icon>
   </button>
 </mat-card>
 
@@ -30,7 +30,7 @@
   <ul cdkDropList #doingList="cdkDropList" [cdkDropListData]="doing"
       [cdkDropListConnectedTo]="[todoList, doneList]" class="list" (cdkDropListDropped)="drop($event)">
     
-    <li class="list-item" *ngFor="let task of doing" cdkDrag>{{task.name}}</li>
+    <li class="list-item" *ngFor="let task of doing" cdkDrag>{{task.text}}</li>
 </ul>
 </mat-card>
 
@@ -38,6 +38,6 @@
   <h3>Done</h3>
   <ul cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
       [cdkDropListConnectedTo]="doingList" class="list" (cdkDropListDropped)="drop($event)">
-    <li class="list-item" *ngFor="let task of done" cdkDrag>{{task.name}}</li>
+    <li class="list-item" *ngFor="let task of done" cdkDrag>{{task.text}}</li>
 </ul>
 </mat-card>
