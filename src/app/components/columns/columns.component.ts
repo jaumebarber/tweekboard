@@ -19,7 +19,6 @@ export class ColumnsComponent implements OnInit {
     columnTitle = '' || this.defaultValue;
     expanded = false;
 
-
     ngOnInit() {
       this.getTasks();
     }
