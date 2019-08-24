@@ -6,21 +6,21 @@
 
   <ul cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" 
       [cdkDropListConnectedTo]="doingList" class="list" (cdkDropListDropped)="drop($event)">
-    <li class="list-item" *ngFor="let task of todo" cdkDrag>
-      <mat-form-field>
+    <li class="list-item" *ngFor="let task of todo" cdkDrag fxLayout="row">
+      <mat-form-field class="task-field" fxFlex>
         <input matInput (keyup.enter)="update(task)" [(ngModel)]="task.text">
       </mat-form-field>
-      <button title="delete task" (click)="delete(task)">
+      <button class="delete" title="Delete task" (click)="delete(task)" fxFlex>
         <mat-icon>clear</mat-icon>        
       </button>
     </li>
-    <li *ngIf="expanded">
+    <li *ngIf="expanded" class="new-task">
       <mat-form-field>
         <input matInput #newTask (keyup.enter)="add(newTask.value)">
       </mat-form-field>
     </li>
   </ul>
-  <button style="background-color:green" (click)="expand()">
+  <button [ngClass]="expanded ? 'collapse' : 'expand'" (click)="expand()">
     <mat-icon>{{expanded ? 'clear' : 'add'}}</mat-icon>
   </button>
 </mat-card>

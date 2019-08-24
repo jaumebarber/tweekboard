@@ -25,16 +25,17 @@
   border: none;
 }
 
+.task-field {
+  position: relative;
+  width: 80%;
+}
+
 .columns {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-row-start: 2;
   grid-column-start: 1;
   grid-column-gap: 1em;
-}
-
-mat-form-field{
-  width: 32.3%;
 }
 
 .title-input {
@@ -69,8 +70,12 @@ mat-form-field{
   opacity: 0;
 }
 
-button{
-  color:white;
+button {
+  outline: none;
+}
+
+.delete, .expand, .collapse{
+  color:lightgrey;
   width: 25px;
   height: 25px;
   line-height: 12px;
@@ -78,11 +83,18 @@ button{
   border: none;
   overflow: hidden;
   transition: .4s;
-  font-family: Nunito;
   font-size: 10pt;
   padding: 0;
 }
 
-button:hover {
-    background: grey;
+.expand {
+  color: green;
+}
+
+.collapse, .delete:hover {
+  color: crimson;
+}
+
+.new-task {
+  padding: 20px 10px;
 }
