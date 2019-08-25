@@ -23,10 +23,10 @@ export class ColumnsComponent implements OnInit {
       this.getTasks();
     }
 
-    add(name: string): void {
-      name = name.trim();
-      if (!name) { return; }
-      this.taskservice.addTask({ name } as Task)
+    add(text: string): void {
+      text = text.trim();
+      if (!text) { return; }
+      this.taskservice.addTask({ text } as Task)
         .subscribe(task => {
           this.todo.push(task);
         });
