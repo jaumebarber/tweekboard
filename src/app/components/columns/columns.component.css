@@ -75,6 +75,7 @@ button {
 }
 
 .delete, .expand, .collapse{
+  background-color: white;
   color:lightgrey;
   width: 25px;
   height: 25px;
