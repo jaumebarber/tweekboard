@@ -1,7 +1,9 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnChanges} from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TaskService } from '../../services/task.service';
-import { Task } from '../../models/task';
+import { ColumnService } from '../../services/column.service';
+import { Column } from 'src/app/models/column';
+import { Task } from './models/task';
 
 
 @Component({
@@ -9,54 +11,78 @@ import { Task } from '../../models/task';
   templateUrl: './columns.component.html',
   styleUrls: ['./columns.component.css'],
 })
-export class ColumnsComponent implements OnInit {
-    constructor(private taskservice: TaskService) {}
-    todo: Task[];
-    doing = [];
-    done = [];
-    hasTitle = false;
-    defaultValue = 'ToDo';
-    columnTitle = '' || this.defaultValue;
+export class ColumnsComponent implements OnChanges {
+    constructor(
+      private taskSrv: TaskService,
+      private columnSrv: ColumnService
+      ) {
+        this.getColumns();
+      }
+    columns: Column[];
+    connectedTo = [];
     expanded = false;
 
-    ngOnInit() {
-      this.getTasks();
+    ngOnChanges() {
+      console.log(this.columns);
     }
 
-    add(text: string): void {
-      text = text.trim();
-      if (!text) { return; }
-      this.taskservice.addTask({ text } as Task)
+    // create
+
+    add(title: string, id: string): void {
+      title = title.trim();
+      if (!title) {return; }
+      if (id.includes('col')) {
+        this.columnSrv.addColumn({ title } as Column)
+          .subscribe(column => {
+              this.columns.push(column);
+          });
+      } else if (id.includes('task')) {
+        this.taskSrv.addTask({ title } as Task)
         .subscribe(task => {
-          this.todo.push(task);
+          this.columns[id].tasks.push(task);
         });
-      this.expand();
+      }
+      this.collapse();
     }
+
+
+    // read
+    // update
+    // delete
+    // retrieve all data
+
+ 
+
 
     update(task: Task): void {
-      this.taskservice.updateTask(task)
+      this.taskSrv.updateTask(task)
       .subscribe();
     }
 
-    delete(task: Task): void {
-      this.todo = this.todo.filter(t => t !== task);
-      this.taskservice.deleteTask(task).subscribe();
+
+    updateColumn(column: Column): void {
+      this.columnSrv.updateColumn(column)
+      .subscribe();
     }
 
-    expand(): void {
+
+    delete(task: Task): void {
+      this.todo = this.todo.filter(t => t !== task);
+      this.taskSrv.deleteTask(task).subscribe();
+    }
+
+    collapse(): void {
         this.expanded = !this.expanded;
     }
 
-    saveColumnTitle(title: string): void {
-      if (this.columnTitle) {
-        this.hasTitle = !this.hasTitle;
-      }
-      this.columnTitle = title;
+    getTasks(): void {
+       this.taskSrv.getTasks()
+           .subscribe(tasks => this.todo = tasks);
     }
 
-    getTasks(): void {
-       this.taskservice.getTasks()
-           .subscribe(tasks => this.todo = tasks);
+    getColumns(): void {
+      this.columnSrv.getColumns()
+           .subscribe(columns => { this.columns = columns; this.columns.forEach(column => this.connectedTo.push(`col-${column.id}`)); });
     }
 
     drop(event: CdkDragDrop<string[]>) {
