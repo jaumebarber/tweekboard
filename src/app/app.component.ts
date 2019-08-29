@@ -10,13 +10,4 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
   title = 'Tweekboard';
-  hasTitle = false;
-  defaultValue = 'Focus for today';
-  projectTitle = '' || this.defaultValue;
-
-  saveTitle(): void {
-    if (this.projectTitle) {
-      this.hasTitle = !this.hasTitle;
-    }
-  }
 }

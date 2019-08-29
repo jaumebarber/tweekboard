@@ -38,6 +38,10 @@
   grid-column-gap: 1em;
 }
 
+.column {
+  margin-bottom: 1%;
+}
+
 .title-input {
   margin: 0;
   border: none;

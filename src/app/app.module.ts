@@ -21,13 +21,15 @@ import { AppComponent } from './app.component';
 import { ColumnsComponent } from './components/columns/columns.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MessagesComponent } from './components/messages/messages.component';
+import { BoardnavComponent } from './components/boardnav/boardnav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ColumnsComponent,
     NavbarComponent,
-    MessagesComponent
+    MessagesComponent,
+    BoardnavComponent
   ],
   imports: [
     BrowserModule,

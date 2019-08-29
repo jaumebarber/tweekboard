@@ -15,7 +15,7 @@
       </button>
     </li>
     <li *ngIf="expanded" class="new-task">
-      <mat-form-field>
+      <mat-form-field class="task-field">
         <input matInput #newTask (keyup.enter)="add(newTask.value)">
       </mat-form-field>
     </li>
@@ -39,5 +39,5 @@
   <ul cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
       [cdkDropListConnectedTo]="doingList" class="list" (cdkDropListDropped)="drop($event)">
     <li class="list-item" *ngFor="let task of done" cdkDrag>{{task.text}}</li>
-</ul>
+  </ul>
 </mat-card>
