@@ -1,0 +1,6 @@
+<nav>
+  <h2 class="board-title">
+    <input matInput autofocus size="25" maxlength="25" class= "title-input" *ngIf="!hasTitle"[(ngModel)]="projectTitle" (keyup.enter)="saveTitle()" value="{{projectTitle}}">
+    <input matInput size="25" maxlength="25" class= "title-input" *ngIf="hasTitle" [(ngModel)]="projectTitle" value="{{projectTitle}}" (keyup.enter)="saveTitle()">
+  </h2>
+</nav>
