@@ -1,8 +1,13 @@
 
 #board {
   display: grid;
-  grid-template-rows: 9% 1fr;
-  min-height: 92vh;
+  grid-template-rows: 5% 1fr;
+  min-height: 93.9vh;
+  background: url('https://source.unsplash.com/random') no-repeat;
+  background-size: 100%;
+  border-radius: 0%;
+  padding-bottom: .5%;
+
 }
 
 .columns {
@@ -11,10 +16,11 @@
   grid-row-start: 2;
   grid-column-start: 1;
   grid-column-gap: 1em;
+  opacity: .85;
 }
 
 mat-form-field{
-  width: 32.3%;
+  width: 32.6%;
 }
 
 .title-input {
@@ -23,5 +29,4 @@ mat-form-field{
   font-weight: 700;
   font-size: inherit;
 }
-
 

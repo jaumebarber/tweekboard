@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from './services/data.service';
+import { Component,  } from '@angular/core';
 
 
 @Component({
@@ -9,29 +8,6 @@ import { DataService } from './services/data.service';
 })
 
 
-export class AppComponent implements OnInit {
-  data$;
+export class AppComponent {
   title = 'Tweekboard';
-  hasTitle = false;
-  defaultValue = 'Focus for today';
-  projectTitle = '' || this.defaultValue;
-
-  constructor(
-    private dataSrv: DataService
-  ) {}
-
-  ngOnInit() {
-    this.getData();
-  }
-
-  getData() {
-    this.dataSrv.getData()
-      .subscribe(data => this.data$ = data);
-  }
-
-  saveTitle(): void {
-    if (this.projectTitle) {
-      this.hasTitle = !this.hasTitle;
-    }
-  }
 }
