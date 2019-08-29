@@ -1,9 +1,9 @@
-import { Component, OnChanges} from '@angular/core';
+import { Component, OnInit, AfterContentChecked} from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TaskService } from '../../services/task.service';
-import { ColumnService } from '../../services/column.service';
-import { Column } from 'src/app/models/column';
-import { Task } from './models/task';
+import { DataService } from '../../services/data.service';
+import { Column } from '../../models/column';
+import { Task } from '../../models/task';
 
 
 @Component({
@@ -11,37 +11,34 @@ import { Task } from './models/task';
   templateUrl: './columns.component.html',
   styleUrls: ['./columns.component.css'],
 })
-export class ColumnsComponent implements OnChanges {
+export class ColumnsComponent implements OnInit {
+  data$;
+  boards$;
+  columns$;
+  tasks$;
+  connectedTo = [];
+  expanded = false;
+
     constructor(
       private taskSrv: TaskService,
-      private columnSrv: ColumnService
-      ) {
-        this.getColumns();
-      }
-    columns: Column[];
-    connectedTo = [];
-    expanded = false;
+      private dataSrv: DataService
+    ) {
+    }
 
-    ngOnChanges() {
-      console.log(this.columns);
+    ngOnInit() {
+      this.data$ =  this.getData();
     }
 
     // create
-
-    add(title: string, id: string): void {
+    addColumn(title: string): void {
       title = title.trim();
       if (!title) {return; }
-      if (id.includes('col')) {
-        this.columnSrv.addColumn({ title } as Column)
-          .subscribe(column => {
-              this.columns.push(column);
-          });
-      } else if (id.includes('task')) {
-        this.taskSrv.addTask({ title } as Task)
-        .subscribe(task => {
-          this.columns[id].tasks.push(task);
+
+      this.dataSrv.add({ title } as Column)
+        .subscribe(column => {
+            this.boards$.columns.push(column);
         });
-      }
+
       this.collapse();
     }
 
@@ -51,7 +48,7 @@ export class ColumnsComponent implements OnChanges {
     // delete
     // retrieve all data
 
- 
+
 
 
     update(task: Task): void {
@@ -61,28 +58,40 @@ export class ColumnsComponent implements OnChanges {
 
 
     updateColumn(column: Column): void {
-      this.columnSrv.updateColumn(column)
+      this.dataSrv.update(column)
       .subscribe();
     }
 
 
-    delete(task: Task): void {
-      this.todo = this.todo.filter(t => t !== task);
-      this.taskSrv.deleteTask(task).subscribe();
+    delete(item: Column | Task ): void {
+      this.data = this.data.filter(i => i !== item);
+      this.dataSrv.delete(item).subscribe();
     }
 
     collapse(): void {
         this.expanded = !this.expanded;
     }
 
-    getTasks(): void {
-       this.taskSrv.getTasks()
-           .subscribe(tasks => this.todo = tasks);
+    getData(): void {
+      this.dataSrv.getData()
+           .subscribe(data => {
+              this.data$ = data;
+              this.boards$ = data.boards;
+              this.columns$ = data.boards.columns;
+              this.tasks$ = data.boards.columns.tasks;
+          });
     }
 
-    getColumns(): void {
-      this.columnSrv.getColumns()
-           .subscribe(columns => { this.columns = columns; this.columns.forEach(column => this.connectedTo.push(`col-${column.id}`)); });
+    populate(dataType): void {
+      dataType.forEach(item => {
+        const idTypes = {b: 'board', c: 'col', t: 'task' };
+        if (item instanceof Column) {
+          this.connectedTo.push(`${idTypes.c}-${item.id}`);
+          }
+        if (item instanceof Task) {
+          this.connectedTo.push(`${idTypes.t}-${item.id}`);
+        }
+      });
     }
 
     drop(event: CdkDragDrop<string[]>) {
