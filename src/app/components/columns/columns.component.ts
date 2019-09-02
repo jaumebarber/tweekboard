@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../models/task';
@@ -14,21 +14,37 @@ export class ColumnsComponent implements OnInit {
     todo: Task[];
     doing = [];
     done = [];
-
     hasTitle = false;
     defaultValue = 'ToDo';
     columnTitle = '' || this.defaultValue;
+    expanded = false;
 
     ngOnInit() {
       this.getTasks();
     }
-    add(name: string): void {
-      name = name.trim();
-      if (!name) { return; }
-      this.taskservice.addTask({ name } as Task)
+
+    add(text: string): void {
+      text = text.trim();
+      if (!text) { return; }
+      this.taskservice.addTask({ text } as Task)
         .subscribe(task => {
           this.todo.push(task);
         });
+      this.expand();
+    }
+
+    update(task: Task): void {
+      this.taskservice.updateTask(task)
+      .subscribe();
+    }
+
+    delete(task: Task): void {
+      this.todo = this.todo.filter(t => t !== task);
+      this.taskservice.deleteTask(task).subscribe();
+    }
+
+    expand(): void {
+        this.expanded = !this.expanded;
     }
 
     saveColumnTitle(title: string): void {
@@ -41,11 +57,6 @@ export class ColumnsComponent implements OnInit {
     getTasks(): void {
        this.taskservice.getTasks()
            .subscribe(tasks => this.todo = tasks);
-    }
-
-    delete(task: Task): void {
-      this.todo = this.todo.filter(t => t !== task);
-      this.taskservice.deleteTask(task).subscribe();
     }
 
     drop(event: CdkDragDrop<string[]>) {
