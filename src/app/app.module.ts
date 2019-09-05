@@ -12,7 +12,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
@@ -40,6 +42,8 @@ import { BoardnavComponent } from './components/boardnav/boardnav.component';
     MatListModule,
     MatCardModule,
     MatMenuModule,
+    MatButtonModule,
+    MatTooltipModule,
     DragDropModule,
     MatToolbarModule,
     MatFormFieldModule,
