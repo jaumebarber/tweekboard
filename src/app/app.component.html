@@ -1,3 +1,6 @@
-<app-navbar></app-navbar>
-<app-board></app-board>
+<app-navbar [title]="title" id="navbar"></app-navbar>
+<mat-card id="board">
+  <app-boardnav class="board-menu"></app-boardnav>
+  <app-columns class="columns"></app-columns>
+</mat-card>
 <router-outlet></router-outlet>

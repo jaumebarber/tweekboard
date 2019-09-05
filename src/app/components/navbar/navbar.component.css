@@ -1,13 +1,93 @@
-#menu-icon {
-  margin-right: .3em;
+
+#logo:hover{
+  color: #ff4081;
 }
 
-.mat-toolbar-single-row {
-  height: 6%;
+#app-title {
+  margin-right: .8em;
 }
 
-#navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  }
+nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 90%;
+  height: 100%;;
+}
+
+nav ul {
+  padding-left: 1em;
+}
+
+#nav-menu {
+  height: 100%;
+  padding-left: 10px;
+}
+
+#nav-wrapper {
+  width: 100%;
+  justify-content: space-between;
+}
+
+#action-buttons, #app-buttons {
+  height: 100%;
+  margin: 0;
+  position: relative;
+  display: inline-flex;
+}
+
+#search-bar {
+  font-size: .7em;
+  display: inline-flex;
+  padding-left: 1em;
+  background: rgba(255,255,255,0.6);
+  margin: 0 .3em;
+  height: 100%;
+}
+
+#search-bar input {
+  color: black;
+  padding-top: 5px;
+}
+
+#search-bar input::placeholder {
+  color: white;
+  font-weight: normal;
+}
+
+#magnifier {
+  padding: .3em .2em 0 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+li a {
+  text-decoration: none;
+  color: white;
+}
+
+li {
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+}
+
+.mat-flat-button {
+  padding: 0 5px;
+  min-width: 0;
+  height: 1.9em;
+  line-height: unset;
+}
+
+.menu-icon {
+  font-size: 1.4em;
+}
+
+#action-buttons {
+  padding: 0;
+}
