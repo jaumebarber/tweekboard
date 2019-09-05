@@ -1,4 +1,25 @@
-<mat-toolbar color="primary">
-  <mat-icon id="menu-icon">dashboard</mat-icon>
-  <span>Tweekboard</span>
+<mat-toolbar color="primary" id="nav-menu">
+  <nav id="nav-wrapper">
+    <ul id="action-buttons">
+      <li>
+        <a mat-flat-button color="primary" href="#" matTooltip="Dashboard"><mat-icon id="logo" class="menu-icon">dashboard</mat-icon></a>
+      </li>
+      <li>
+        <h1 id="app-title">{{title}}</h1>
+      </li>
+      <li><a mat-flat-button color="primary" href="#" matTooltip="Add a board"><mat-icon class="menu-icon">developer_board</mat-icon></a></li>
+      <li><a mat-flat-button color="primary" href="#" matTooltip="Add a squad"><mat-icon class="menu-icon">people</mat-icon></a></li>
+    </ul>
+    <ul id="app-buttons">
+      <li>
+        <form action="POST" id="search-bar">
+          <input matInput placeholder="Search">
+          <mat-icon id="magnifier" mattSuffix>search</mat-icon>
+        </form>
+      </li>
+      <li><a mat-flat-button color="primary" href="#" matTooltip="User login"><mat-icon class="menu-icon">account_circle</mat-icon></a></li>
+      <li><a mat-flat-button color="primary" href="#" matTooltip="Menu"><mat-icon class="menu-icon">menu</mat-icon></a></li>
+    </ul>
+  </nav>
 </mat-toolbar>
+
