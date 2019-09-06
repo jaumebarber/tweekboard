@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../models/task';
-import { Column } from '../models/column';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -16,7 +15,7 @@ export class TaskService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  private tasksUrl = 'api/tasks';
+  private tasksUrl = 'api/data';
   tasks: Task[];
 
   constructor(
@@ -32,8 +31,7 @@ export class TaskService {
   }
 
   getTasks(): Observable<Task[]> {
-    const request = this.http.get<Task[]>(this.tasksUrl)
-    return request.pipe(
+    return this.http.get<any>(this.tasksUrl).pipe(map(data => data.boards[0].columns[0].tasks),
       tap(_ => this.log('fetched tasks')),
       catchError(this.handleError<Task[]>('getTasks', []))
     );

@@ -1,5 +1,4 @@
-export class Task {
+export interface Task {
     id: number;
-    type: 'task';
     text: string;
 }

@@ -1,9 +1,9 @@
 import { Component, OnInit, AfterContentChecked} from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TaskService } from '../../services/task.service';
-import { DataService } from '../../services/data.service';
-import { Column } from '../../models/column';
+import { ColumnService } from 'src/app/services/column.service';
 import { Task } from '../../models/task';
+import { Column } from '../../models/column';
 
 
 @Component({
@@ -12,31 +12,28 @@ import { Task } from '../../models/task';
   styleUrls: ['./columns.component.css'],
 })
 export class ColumnsComponent implements OnInit {
-  data$;
-  boards$;
-  columns$;
-  tasks$;
-  connectedTo = [];
-  expanded = false;
-
     constructor(
       private taskSrv: TaskService,
-      private dataSrv: DataService
-    ) {
-    }
+      private columnSrv: ColumnService
+    ) {}
+    tasks$: Task[];
+    columns$: Column[];
+    done = [];
+    hasTitle = false;
+    defaultValue = 'ToDo';
+    columnTitle = '' || this.defaultValue;
+    expanded = false;
 
     ngOnInit() {
-      this.data$ =  this.getData();
+      this.getColumns();
     }
 
-    // create
-    addColumn(title: string): void {
-      title = title.trim();
-      if (!title) {return; }
-
-      this.dataSrv.add({ title } as Column)
-        .subscribe(column => {
-            this.boards$.columns.push(column);
+    add(text: string): void {
+      text = text.trim();
+      if (!text) { return; }
+      this.taskSrv.addTask({ text } as Task)
+        .subscribe(task => {
+          this.tasks$.push(task);
         });
 
       this.collapse();
@@ -56,43 +53,25 @@ export class ColumnsComponent implements OnInit {
       .subscribe();
     }
 
-
-    updateColumn(column: Column): void {
-      this.dataSrv.update(column)
-      .subscribe();
-    }
-
-
-    delete(item: Column | Task ): void {
-      this.data = this.data.filter(i => i !== item);
-      this.dataSrv.delete(item).subscribe();
+    delete(task: Task): void {
+      this.tasks$ = this.tasks$.filter(t => t !== task);
+      this.taskSrv.deleteTask(task).subscribe();
     }
 
     collapse(): void {
         this.expanded = !this.expanded;
     }
 
-    getData(): void {
-      this.dataSrv.getData()
-           .subscribe(data => {
-              this.data$ = data;
-              this.boards$ = data.boards;
-              this.columns$ = data.boards.columns;
-              this.tasks$ = data.boards.columns.tasks;
-          });
+
+    getTasks(): void {
+       this.taskSrv.getTasks()
+           .subscribe(tasks => this.tasks$ = tasks);
     }
 
-    populate(dataType): void {
-      dataType.forEach(item => {
-        const idTypes = {b: 'board', c: 'col', t: 'task' };
-        if (item instanceof Column) {
-          this.connectedTo.push(`${idTypes.c}-${item.id}`);
-          }
-        if (item instanceof Task) {
-          this.connectedTo.push(`${idTypes.t}-${item.id}`);
-        }
-      });
-    }
+    getColumns(): void {
+      this.columnSrv.getColumns()
+          .subscribe(columns =>  this.columns$ = columns);
+   }
 
     drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
