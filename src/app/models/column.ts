@@ -1,9 +1,7 @@
 import { Task } from './task';
 
-export class Column {
+export interface Column {
   id: number;
-  type: 'column';
-  title: string;
+  text: string;
   tasks?: Task[];
 }
-

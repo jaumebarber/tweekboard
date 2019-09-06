@@ -1,13 +1,11 @@
-
 <div *ngFor="let column of columns$">
-  <mat-card class="column" *ngIf="column | async">
+  <mat-card class="column">
     <h3> 
       <input maxlength="15" class="title-input" matInput value="{{column.title}}" (keyup.enter)="update(column)" >
     </h3>
-
     <ul cdkDropList id="col-{{+column.id}}" [cdkDropListData]="column.tasks" 
-        [cdkDropListConnectedTo]="connectedTo" class="list" (cdkDropListDropped)="drop($event)">
-      <li class="list-item" *ngFor="let task of tasks$" id="task-{{+task.id}}" cdkDrag fxLayout="row">
+    [cdkDropListConnectedTo]="connectedTo" class="list" (cdkDropListDropped)="drop($event)">
+      <li class="list-item" *ngFor="let task of column.tasks" id="task-{{+task.id}}" cdkDrag fxLayout="row">
         <mat-form-field class="task-field" fxFlex>
           <input matInput (keyup.enter)="update(task)" [(ngModel)]="task.text">
         </mat-form-field>
@@ -26,3 +24,4 @@
     </button>
   </mat-card>
 </div>
+
