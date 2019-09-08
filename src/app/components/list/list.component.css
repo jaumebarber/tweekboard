@@ -27,12 +27,12 @@ mat-card {
   border: none;
 }
 
-.task-field {
+.card-field {
   position: relative;
   width: 80%;
 }
 
-.columns {
+.lists {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-row-start: 2;
@@ -40,7 +40,7 @@ mat-card {
   grid-column-gap: 1em;
 }
 
-.column {
+.list {
   margin-bottom: 1%;
 }
 
@@ -101,6 +101,6 @@ button {
   color: crimson;
 }
 
-.new-task {
+.new-card {
   padding: 20px 10px;
 }

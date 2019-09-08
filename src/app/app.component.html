@@ -1,6 +1,8 @@
 <app-navbar [title]="title" id="navbar"></app-navbar>
-<mat-card id="board">
-  <app-boardnav class="board-menu"></app-boardnav>
-  <app-columns class="columns"></app-columns>
+<mat-card id="board" *ngFor="let board of data$.boards">
+  <h2>
+    <input matInput autofocus size="25" maxlength="25" class= "title-input" *ngIf="!hasTitle"[(ngModel)]="board.title">
+  </h2>
+  <app-list class="lists" [board]="board"></app-list>
 </mat-card>
 <router-outlet></router-outlet>

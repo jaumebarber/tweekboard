@@ -1,0 +1,27 @@
+<div *ngFor="let list of lists">
+  <mat-card class="list">
+    <h3> 
+      <input maxlength="15" class="title-input" matInput value="{{list.title}}" (keyup.enter)="update(list)" >
+    </h3>
+    <ul cdkDropList id="col-{{+list.id}}" [cdkDropListData]="list.cards" 
+    [cdkDropListConnectedTo]="connectedTo" class="list" (cdkDropListDropped)="drop($event)">
+      <li class="list-item" *ngFor="let card of list.cards" id="card-{{+card.id}}" cdkDrag fxLayout="row">
+        <mat-form-field class="card-field" fxFlex>
+          <input matInput (keyup.enter)="update(card)" [(ngModel)]="card.text">
+        </mat-form-field>
+        <button class="delete" title="Delete card" (click)="delete(card)" fxFlex>
+          <mat-icon>clear</mat-icon>        
+        </button>
+      </li>
+      <li *ngIf="expanded" class="new-card">
+        <mat-form-field>
+          <input matInput #newCard (keyup.enter)="add(newCard.value)">
+        </mat-form-field>
+      </li>
+    </ul>
+    <button [ngClass]="expanded ? 'collapse' : 'expand'" (click)="collapse()">
+      <mat-icon>{{expanded ? 'clear' : 'add'}}</mat-icon>
+    </button>
+  </mat-card>
+</div>
+

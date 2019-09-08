@@ -3,8 +3,8 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
-import { Task } from '../models/task';
-import { Column } from '../models/column';
+import { Card } from '../models/card';
+import { List } from '../models/list';
 
 @Injectable({
   providedIn: 'root'

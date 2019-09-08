@@ -13,20 +13,20 @@ export class InMemoryDataService implements InMemoryDbService {
           id: 1,
           title: 'Focus for today',
           type: 'board',
-          columns: [
+          lists: [
             { id: 1,
-              type: 'column',
+              type: 'list',
               title: 'ToDo',
-              tasks: [
-                { id: 1, type: 'task', text: 'Get to work' },
-                { id: 2, type: 'task', text: 'Eat' },
-                { id: 3, type: 'task', text: 'Sleep' },
-                { id: 4, type: 'task', text: 'Dance' },
-                { id: 5, type: 'task', text: 'Shout' }
+              cards: [
+                { id: 1, type: 'card', text: 'Get to work' },
+                { id: 2, type: 'card', text: 'Eat' },
+                { id: 3, type: 'card', text: 'Sleep' },
+                { id: 4, type: 'card', text: 'Dance' },
+                { id: 5, type: 'card', text: 'Shout' }
               ]
             },
-            { id: 2, type: 'column', title: 'Doing', tasks: [] },
-            { id: 3, type: 'column', title: 'Done', tasks: [] },
+            { id: 2, type: 'list', title: 'Doing', cards: [] },
+            { id: 3, type: 'list', title: 'Done', cards: [] },
           ]
         }
       ]
