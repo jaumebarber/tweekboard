@@ -1,9 +1,8 @@
-import { Component, OnInit, AfterContentChecked} from '@angular/core';
+import { Component, AfterContentInit, Input } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { TaskService } from '../../services/task.service';
-import { ColumnService } from 'src/app/services/column.service';
-import { Task } from '../../models/task';
+import { DataService } from '../../services/data.service';
 import { Column } from '../../models/column';
+
 
 
 @Component({
@@ -11,33 +10,32 @@ import { Column } from '../../models/column';
   templateUrl: './columns.component.html',
   styleUrls: ['./columns.component.css'],
 })
-export class ColumnsComponent implements OnInit {
+export class ColumnsComponent implements AfterContentInit {
     constructor(
-      private taskSrv: TaskService,
-      private columnSrv: ColumnService
+      private dataSrv: DataService
     ) {}
-    tasks$: Task[];
-    columns$: Column[];
-    done = [];
-    hasTitle = false;
-    defaultValue = 'ToDo';
-    columnTitle = '' || this.defaultValue;
+    @Input() board;
+    columns: Column[];
     expanded = false;
 
-    ngOnInit() {
+    ngAfterContentInit() {
       this.getColumns();
     }
 
-    add(text: string): void {
-      text = text.trim();
-      if (!text) { return; }
-      this.taskSrv.addTask({ text } as Task)
-        .subscribe(task => {
-          this.tasks$.push(task);
-        });
-
-      this.collapse();
+    getColumns() {
+      this.columns = this.board.columns;
     }
+
+    // add(text: string): void {
+    //   text = text.trim();
+    //   if (!text) { return; }
+    //   this.taskSrv.addTask({ text } as Task)
+    //     .subscribe(task => {
+    //       this.tasks$.push(task);
+    //     });
+
+    //   this.collapse();
+    // }
 
 
     // read
@@ -48,30 +46,19 @@ export class ColumnsComponent implements OnInit {
 
 
 
-    update(task: Task): void {
-      this.taskSrv.updateTask(task)
-      .subscribe();
-    }
+    // update(task: Task): void {
+    //   this.taskSrv.updateTask(task)
+    //   .subscribe();
+    // }
 
-    delete(task: Task): void {
-      this.tasks$ = this.tasks$.filter(t => t !== task);
-      this.taskSrv.deleteTask(task).subscribe();
-    }
+    // delete(task: Task): void {
+    //   this.tasks$ = this.tasks$.filter(t => t !== task);
+    //   this.taskSrv.deleteTask(task).subscribe();
+    // }
 
     collapse(): void {
-        this.expanded = !this.expanded;
+      this.expanded = !this.expanded;
     }
-
-
-    getTasks(): void {
-       this.taskSrv.getTasks()
-           .subscribe(tasks => this.tasks$ = tasks);
-    }
-
-    getColumns(): void {
-      this.columnSrv.getColumns()
-          .subscribe(columns =>  this.columns$ = columns);
-   }
 
     drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
