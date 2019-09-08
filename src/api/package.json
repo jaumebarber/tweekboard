@@ -1,0 +1,36 @@
+{
+  "name": "tweekboard-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive --reporter=nyan",
+    "devstart": "nodemon --exec node run.js",
+    "start": "node run.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaumebarber/tweekboard.git"
+  },
+  "keywords": [
+    "tweekboard"
+  ],
+  "author": "jaume_barber mario_sanz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaumebarber/tweekboard/issues"
+  },
+  "homepage": "https://github.com/jaumebarber/tweekboard#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.11"
+  }
+}
