@@ -20,7 +20,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 
 import { AppComponent } from './app.component';
-import { ColumnsComponent } from './components/columns/columns.component';
+import { ListComponent } from './components/list/list.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { BoardnavComponent } from './components/boardnav/boardnav.component';
@@ -28,7 +28,7 @@ import { BoardnavComponent } from './components/boardnav/boardnav.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ColumnsComponent,
+    ListComponent,
     NavbarComponent,
     MessagesComponent,
     BoardnavComponent

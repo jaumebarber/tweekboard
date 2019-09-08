@@ -18,7 +18,7 @@
 
 }
 
-.columns {
+.lists {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-row-start: 2;

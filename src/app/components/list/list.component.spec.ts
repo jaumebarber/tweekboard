@@ -1,16 +1,16 @@
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { ColumnsComponent } from './columns.component';
+import { ListComponent } from './list.component';
 
-describe('ColumnsComponent', () => {
-  let component: ColumnsComponent;
-  let fixture: ComponentFixture<ColumnsComponent>;
+describe('ListComponent', () => {
+  let component: ListComponent;
+  let fixture: ComponentFixture<ListComponent>;
 
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ColumnsComponent ],
+      declarations: [ ListComponent ],
       imports: [
         NoopAnimationsModule,
         DragDropModule,
@@ -19,7 +19,7 @@ describe('ColumnsComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ColumnsComponent);
+    fixture = TestBed.createComponent(ListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -27,5 +27,5 @@ describe('ColumnsComponent', () => {
   it('should compile', () => {
     expect(component).toBeTruthy();
   });
-  
+
 });
