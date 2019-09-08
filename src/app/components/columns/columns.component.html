@@ -1,4 +1,4 @@
-<div *ngFor="let column of columns$">
+<div *ngFor="let column of columns">
   <mat-card class="column">
     <h3> 
       <input maxlength="15" class="title-input" matInput value="{{column.title}}" (keyup.enter)="update(column)" >
