@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    const data = {
+    let data = {
       boards: [
         {
           id: 1,
@@ -25,12 +25,13 @@ export class InMemoryDataService implements InMemoryDbService {
                 { id: 5, type: 'task', text: 'Shout' }
               ]
             },
-            { id: 2, type: 'column', title: 'Doing', tasks: []},
-            { id: 3, type: 'column', title: 'Done', tasks: []},
+            { id: 2, type: 'column', title: 'Doing', tasks: [] },
+            { id: 3, type: 'column', title: 'Done', tasks: [] },
           ]
         }
       ]
     };
+
     return { data };
   }
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Task } from '../models/task';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
 
 @Injectable({
@@ -16,7 +16,6 @@ export class TaskService {
   };
 
   private tasksUrl = 'api/data';
-  tasks: Task[];
 
   constructor(
     private http: HttpClient,
@@ -27,13 +26,6 @@ export class TaskService {
     return this.http.post<Task>(this.tasksUrl, task, this.httpOptions).pipe(
       tap((newTask: Task) => this.log(`added task w/ id=${newTask.id}`)),
       catchError(this.handleError<Task>('addTask'))
-    );
-  }
-
-  getTasks(): Observable<Task[]> {
-    return this.http.get<any>(this.tasksUrl).pipe(map(data => data.boards[0].columns[0].tasks),
-      tap(_ => this.log('fetched tasks')),
-      catchError(this.handleError<Task[]>('getTasks', []))
     );
   }
 
