@@ -55,3 +55,4 @@ import { BoardnavComponent } from './components/boardnav/boardnav.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
