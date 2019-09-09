@@ -13,7 +13,7 @@ export class ListComponent implements AfterContentChecked {
   @Input() board;
   lists: List[];
   expanded = false;
-  
+
   constructor() {}
   ngAfterContentChecked() {
     this.getLists();

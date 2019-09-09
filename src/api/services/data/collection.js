@@ -1,13 +1,6 @@
-import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root',
-})
-
-export class InMemoryDataService implements InMemoryDbService {
-  createDb() {
-    let data = {
+class Collection {
+  static retrieveAll () {
+    return {
       boards: [
         {
           id: 1,
@@ -31,9 +24,7 @@ export class InMemoryDataService implements InMemoryDbService {
         }
       ]
     };
-
-    return { data };
   }
-}
+} 
 
-
+module.exports = Collection;

@@ -16,7 +16,7 @@ export class DataService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  private dataUrl = 'api/data';
+  private dataUrl = 'http://127.0.0.1:3001/data';
 
   constructor(
     private http: HttpClient,
