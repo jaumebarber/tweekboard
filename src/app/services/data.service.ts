@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, interval, from } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map, tap, pluck } from 'rxjs/operators';
 import { MessageService } from './message.service';
-import { Card } from '../models/card';
-import { List } from '../models/list';
+import { List } from '../models/models';
 
 @Injectable({
   providedIn: 'root'
@@ -23,10 +22,11 @@ export class DataService {
     private messageSrv: MessageService
   ) { }
 
-  getData(): Observable<any> {
+  getBoards(): Observable<any> {
     return this.http.get<any>(this.dataUrl).pipe(
+      pluck('boards'),
       tap(_ => this.log('fetched data')),
-      catchError(this.handleError<object>('getData', []))
+      catchError(this.handleError<object>('getBoards', []))
     );
   }
 

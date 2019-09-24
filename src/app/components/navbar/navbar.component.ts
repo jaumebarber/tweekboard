@@ -8,6 +8,6 @@ import { Input } from '@angular/core';
   styleUrls: ['navbar.component.css'],
 })
 export class NavbarComponent {
-  @Input() title: string;
+  @Input() appName: string;
 }
 

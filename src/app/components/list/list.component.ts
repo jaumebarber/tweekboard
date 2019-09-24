@@ -1,6 +1,6 @@
-import { Component, AfterContentChecked, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { List } from '../../models/list';
+import { List } from '../../models/models';
 
 
 
@@ -9,13 +9,14 @@ import { List } from '../../models/list';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
 })
-export class ListComponent implements AfterContentChecked {
+export class ListComponent implements OnInit {
   @Input() board;
   lists: List[];
   expanded = false;
-  
+
   constructor() {}
-  ngAfterContentChecked() {
+
+  ngOnInit() {
     this.getLists();
   }
 

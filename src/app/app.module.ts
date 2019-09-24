@@ -1,3 +1,4 @@
+import { BoardComponent } from './components/board/board.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -22,13 +23,15 @@ import { ListComponent } from './components/list/list.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { BoardnavComponent } from './components/boardnav/boardnav.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
     NavbarComponent,
     MessagesComponent,
-    BoardnavComponent
+    BoardnavComponent,
+    BoardComponent
   ],
   imports: [
     BrowserModule,

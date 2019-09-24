@@ -3,7 +3,7 @@
   color: #ff4081;
 }
 
-#app-title {
+#app-name {
   margin-right: .8em;
 }
 
@@ -20,8 +20,8 @@ nav ul {
 }
 
 #nav-menu {
-  height: 5vh;
-  padding-left: 10px;
+  height: 4vh;
+  padding: 0 10px;
 }
 
 #nav-wrapper {
@@ -40,7 +40,7 @@ nav ul {
   font-size: .7em;
   display: inline-flex;
   padding-left: 1em;
-  background: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.3);
   margin: 0 .3em;
   height: 100%;
 }

@@ -8,30 +8,21 @@ import { DataService } from './services/data.service';
   styleUrls: ['./app.component.css']
 })
 
-
 export class AppComponent implements OnInit {
-  data$;
-  title = 'Tweekboard';
-  hasTitle = false;
-  defaultValue = 'Focus for today';
-  projectTitle = '' || this.defaultValue;
+  APP_NAME = 'Tweekboard';
+  boards = [];
 
   constructor(
     private dataSrv: DataService
   ) {}
 
   ngOnInit() {
-    this.getData();
+    this.getBoards();
   }
 
-  getData() {
-    this.dataSrv.getData()
-      .subscribe(data => this.data$ = data);
+  getBoards() {
+    this.dataSrv.getBoards()
+    .subscribe(boards => this.boards = boards);
   }
 
-  saveTitle(): void {
-    if (this.projectTitle) {
-      this.hasTitle = !this.hasTitle;
-    }
-  }
 }

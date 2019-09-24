@@ -1,4 +1,6 @@
-<mat-card id="board">
-    <h2><input placeholder="Enter Topic"></h2>
-    <app-card class="card mat-card"></app-card>
+<mat-card id="board" *ngFor="let board of boards">
+	<h2>
+		<input matInput autofocus size="25" maxlength="25" class= "title-input" [(ngModel)]="board.title">
+	</h2>
+	<app-list class="lists" [board]="board"></app-list>
 </mat-card>

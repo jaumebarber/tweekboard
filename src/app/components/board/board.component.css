@@ -1,11 +1,34 @@
 #board {
-  height: 89.3%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 9% 1fr 1fr 1fr;
+	display: grid;
+  grid-template-rows: 5% 1fr;
+  min-height: 93.9vh;
+  background: url('https://source.unsplash.com/random') no-repeat;
+  background-size: 100%;
+  border-radius: 0%;
+  padding-bottom: .5%;
 }
 
 .card {
   grid-column-start: 1;
   grid-row: span 5;
+}
+
+.title-input {
+  margin: 0;
+  border: none;
+  font-weight: 700;
+  font-size: inherit;
+}
+
+mat-form-field{
+  width: 32.6%;
+}
+
+.lists {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-row-start: 2;
+  grid-column-start: 1;
+  grid-column-gap: .5em;
+  opacity: .9;
 }
