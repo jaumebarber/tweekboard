@@ -20,7 +20,6 @@ export class ListComponent implements OnInit {
   ngOnInit() {
     this.getLists();
     this.getListConnections();
-    console.log(this.listConnections);
   }
 
   getLists() {

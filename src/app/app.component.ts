@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from './services/data.service';
-
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,21 +6,6 @@ import { DataService } from './services/data.service';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent  {
   APP_NAME = 'Tweekboard';
-  boards = [];
-
-  constructor(
-    private dataSrv: DataService
-  ) {}
-
-  ngOnInit() {
-    this.getBoards();
-  }
-
-  getBoards() {
-    this.dataSrv.getBoards()
-    .subscribe(boards => this.boards = boards);
-  }
-
 }

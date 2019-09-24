@@ -1,0 +1,8 @@
+<mat-card id="dashboard" *ngFor="let board of dashboard">
+  <h2>Board List</h2>
+  <div class="board-items">
+    <mat-card #boardItem class="board-item">
+      <h3>{{board.title}}</h3>
+    </mat-card>
+  </div>
+</mat-card>

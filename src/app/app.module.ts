@@ -23,6 +23,7 @@ import { ListComponent } from './components/list/list.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { BoardnavComponent } from './components/boardnav/boardnav.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { BoardnavComponent } from './components/boardnav/boardnav.component';
     NavbarComponent,
     MessagesComponent,
     BoardnavComponent,
-    BoardComponent
+    BoardComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

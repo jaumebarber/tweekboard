@@ -1,0 +1,17 @@
+#dashboard {
+  display: grid;
+  grid-template-rows: 5% 1fr;
+  height: 92.7vh;
+}
+
+.board-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.board-item {
+  border-radius: 0;
+  background: url(https://source.unsplash.com/featured?{boards},{tech});
+
+}
