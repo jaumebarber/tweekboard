@@ -12,18 +12,26 @@ import { List } from '../../models/models';
 export class ListComponent implements OnInit {
   @Input() board;
   lists: List[];
+  listConnections = [];
   expanded = false;
 
   constructor() {}
 
   ngOnInit() {
     this.getLists();
+    this.getListConnections();
+    console.log(this.listConnections);
   }
 
   getLists() {
     this.lists = this.board.lists;
   }
 
+  getListConnections() {
+    for (const list of this.lists) {
+      this.listConnections.push(`list-${list.id}`);
+    }
+  }
     // add(text: string): void {
     //   text = text.trim();
     //   if (!text) { return; }
